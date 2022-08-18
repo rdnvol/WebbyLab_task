@@ -1,0 +1,18 @@
+.films__block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    /*overflow: hidden;*/
+}
+
+.list__title {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.film__item {
+    width: 33.33%;
+    text-align: center;
+    margin-bottom: 1em;
+}

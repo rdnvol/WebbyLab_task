@@ -1,1 +1,1 @@
-My first project for WabbyLab company :)
+My first project for WebbyLab company :)

@@ -1,11 +1,14 @@
 import React from 'react';
 import FilmItem from "./FilmItem";
+import classes from './FilmsList.module.css'
 
-const FilmsList = () => {
+const FilmsList = ({list}) => {
     return (
         <div>
-            <h1>Список фільмів</h1>
-            <FilmItem film={{title: 'title1', release: 1974, format: 'VHS', stars: ['Mel Brooks', 'Clevon Little', 'Harvey Korman', 'Gene Wilder', 'Slim Pickens', 'Madeline Kahn']}}/>
+            <h1 className={classes.list__title}> Список фільмів</h1>
+            <div className={classes.films__block}>
+            {list.map((film) => <FilmItem key={film.id} film={film}/>)}
+            </div>
         </div>
     );
 };
