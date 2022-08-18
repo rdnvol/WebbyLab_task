@@ -1,9 +1,8 @@
 .films__block {
+    width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    /*overflow: hidden;*/
 }
 
 .list__title {
@@ -11,8 +10,63 @@
     margin-bottom: 2em;
 }
 
+/*FilmItem*/
+
 .film__item {
     width: 33.33%;
     text-align: center;
     margin-bottom: 1em;
+}
+
+/*FilmInfo*/
+
+.film__info {
+    position: fixed;
+    display: none;
+    background: rgba(0,0,0, 0.5);
+}
+
+.film__info.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.film__info__content {
+    padding: 25px;
+    background: white;
+    border-radius: 5px;
+    min-width: 300px;
+}
+
+/*NewFilmForm*/
+
+.film__form {
+
+}
+
+/*FilmForm*/
+.myModule {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: none;
+    background: rgba(0,0,0, 0.5);
+}
+
+.myModule.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.myModule__content {
+    padding: 25px;
+    background: white;
+    border-radius: 5px;
+    min-width: 300px;
 }

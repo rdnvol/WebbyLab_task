@@ -1,8 +1,12 @@
-import React from "react";
 import FilmsList from "./components/FilmsList";
+import NewFilmForm from "./components/NewFilmForm";
+import classes from './App.css'
+import {useState} from "react";
+import MyModal from "./components/MyModal";
+import MyButton from "./components/UI/button/MyButton";
 
 function App() {
-    const films = [
+    const [films, setFilms] = useState([
         {
             id: 1,
             title: 'Blazing Saddles',
@@ -31,15 +35,29 @@ function App() {
             format: 'VHS',
             stars: ['Mel Brooks', 'Clevon Little', 'Harvey Korman', 'Gene Wilder', 'Slim Pickens', 'Madeline Kahn']
         }
-        ]
+    ])
 
-  return (
-      <div>
-        <h1> Hello movies </h1>
-        <FilmsList list={films}/>
-      </div>
+    const [modal, setModal] = useState(false);
 
-  );
+    const createFilm = (newFilm) => {
+        setFilms([...films, newFilm])
+        setModal(false)
+    }
+
+    return (
+        <div className={classes}>
+            <h1> Hello movies </h1>
+
+            <MyModal visible={modal} setVisible={setModal}>
+                <NewFilmForm create={createFilm}/>
+            </MyModal>
+
+            <MyButton onClick={(e) => setModal(true)} >Add film</MyButton>
+
+            <FilmsList list={films}/>
+        </div>
+
+    );
 }
 
 export default App;

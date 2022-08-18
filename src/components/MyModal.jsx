@@ -1,9 +1,8 @@
 import React from 'react';
 import classes from './FilmsList.module.css'
 
-const FilmInfo = ({film, visible, setVisible}) => {
-    const rootClasses = [classes.film__info]
-
+const MyModal = ({children, visible, setVisible}) => {
+    const rootClasses = [classes.myModule]
     if(visible)
     {
         rootClasses.push(classes.active)
@@ -11,9 +10,13 @@ const FilmInfo = ({film, visible, setVisible}) => {
 
     return (
         <div className={rootClasses.join(' ')} onClick={() => setVisible(false)}>
-
+            <div className={classes.myModule__content} onClick={(e) => e.stopPropagation()}>
+                {children}
+            </div>
         </div>
     );
 };
 
-export default FilmInfo;
+export default MyModal;
+
+
