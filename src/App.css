@@ -5,11 +5,10 @@
 }
 
 #root {
-    width: 1200px;
     display: flex;
     justify-content: center;
 }
 
 .App {
-    /*max-width: 1200px;*/
+    width: 1200px;
 }

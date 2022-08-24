@@ -6,7 +6,7 @@ import MyInput from "./UI/input/MyInput";
 const NewFilmForm = ({create}) => {
     const [title, setTitle] = useState('')
     const [release, setRelease] = useState('')
-    // const [format, setFormat] = useState('')
+    const [format, setFormat] = useState('VHS')
     const [stars, setStars] = useState('')
 
     const addNewFilm = (e) => {
@@ -15,18 +15,19 @@ const NewFilmForm = ({create}) => {
             id: Date.now(),
             title,
             release,
-            // format,
+            format,
             stars,
         }
+        console.log(newFilm)
         create(newFilm)
         setTitle('')
         setRelease('')
+        setStars('VHS')
         setStars('')
     }
 
     return (
-        <form className={classes.film__form}>
-            <input type="text" required={true}/>
+        <form className={classes.film__form} onSubmit={addNewFilm}>
             <MyInput
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
@@ -37,23 +38,40 @@ const NewFilmForm = ({create}) => {
             <MyInput
                 value={release}
                 onChange={(e) => setRelease(e.target.value)}
-                type="text"
+                type="number"
                 placeholder="Рік випуску"
-
+                required
             />
 
-            {/*<input type="radio"/> VHS*/}
-            {/*<input type="radio"/> DVD*/}
-            {/*<input type="radio"/> Blu-ray*/}
+            <input
+                value={'VHS'}
+                type="radio"
+                name="format"
+                onChange={(e) => setFormat(e.target.value)}
+                checked
+            /> VHS
+            <input
+                value={'DVD'}
+                type="radio"
+                name="format"
+                onChange={(e) => setFormat(e.target.value)}
+            />DVD
+            <input
+                value={'Blu-ray'}
+                type="radio"
+                name="format"
+                onChange={(e) => setFormat(e.target.value)}
+
+            />Blu-ray
 
             <MyInput
                 value={stars}
                 onChange={(e) => setStars(e.target.value)}
                 type="text"
                 placeholder="Список акторів"
-
+                required
             />
-            <MyButton type="submit" onClick={addNewFilm}>Add</MyButton>
+            <MyButton type="submit">Add</MyButton>
 
         </form>
     );

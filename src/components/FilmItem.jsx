@@ -1,11 +1,7 @@
 import React from 'react';
 import classes from './FilmsList.module.css';
 
-const FilmItem = ({film}) => {
-    const openFilmInfo = (film) => {
-        // <FilmInfo film={film} visible={true} setVisible={true}/>
-    }
-
+const FilmItem = ({film, openFilmInfo}) => {
     return (
         <div onClick={() => openFilmInfo(film)} className={classes.film__item}>
             <img src="https://via.placeholder.com/150C" alt=""/>

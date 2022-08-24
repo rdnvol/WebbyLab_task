@@ -4,6 +4,7 @@ import classes from './App.css'
 import {useState} from "react";
 import MyModal from "./components/MyModal";
 import MyButton from "./components/UI/button/MyButton";
+// import FilmInfo from "./components/FilmInfo";
 
 function App() {
     const [films, setFilms] = useState([
@@ -45,16 +46,17 @@ function App() {
     }
 
     return (
-        <div className={classes}>
+        <div className={"App"}>
             <h1> Hello movies </h1>
 
             <MyModal visible={modal} setVisible={setModal}>
                 <NewFilmForm create={createFilm}/>
             </MyModal>
 
+
             <MyButton onClick={(e) => setModal(true)} >Add film</MyButton>
 
-            <FilmsList list={films}/>
+            <FilmsList list={films} modal={modal} setModal={setModal}/>
         </div>
 
     );
