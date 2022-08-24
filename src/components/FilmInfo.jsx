@@ -1,8 +1,9 @@
 import React from 'react';
+import MyButton from "./UI/button/MyButton";
 // import classes from './FilmsList.module.css'
 
-const FilmInfo = ({film}) => {
-    console.log(film)
+const FilmInfo = ({film, remove}) => {
+    console.log(remove)
     if (film)
     {
         return (
@@ -15,6 +16,7 @@ const FilmInfo = ({film}) => {
                         <h6 key={index}>{star}</h6>
                     )
                 })}
+                <MyButton onClick={() => remove(film)}>Видалити фільм</MyButton>
             </div>
         );
     }

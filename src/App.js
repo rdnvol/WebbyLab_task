@@ -1,7 +1,7 @@
 import FilmsList from "./components/FilmsList";
 import NewFilmForm from "./components/NewFilmForm";
 import classes from './App.css'
-import {useState} from "react";
+import {useMemo, useState} from "react";
 import MyModal from "./components/MyModal";
 import MyButton from "./components/UI/button/MyButton";
 import MySelect from "./components/UI/select/MySelect";
@@ -48,23 +48,36 @@ function App() {
         setModal(false)
     }
 
+    const deleteFilm = (deletedFilm) => {
+        console.log(deletedFilm)
+        setFilms(films.filter(film => film.id !== deletedFilm.id))
+    }
+
     function yearSort(a, b) {
         console.log(a, b)
         return a > b ? 1 : b > a ? -1 : 0;
     }
 
-    const sortFilms = (sort) => {
-        setSelectSort(sort)
-        if (sort == 'release') {
-            setFilms([...films].sort((a,b) => {
+    const sortedFilms = useMemo(() => {
+        if(selectSort)
+        {
+            if (selectSort === 'release') {
+                return [...films].sort((a,b) => {
                     return (
-                        yearSort(a[sort], b[sort])
+                        yearSort(a[selectSort], b[selectSort])
                     )
-                }))
+                })
+            }
+            else {
+                return [...films].sort((a,b) => a[selectSort].localeCompare(b[selectSort]))
+            }
         }
-        else {
-            setFilms([...films].sort((a,b) => a[sort].localeCompare(b[sort])))
-        }
+        return films
+    }, [selectSort, films])
+
+    const sortFilms = (sort) => {
+        console.log(sort)
+        setSelectSort(sort)
     }
 
     return (
@@ -88,7 +101,7 @@ function App() {
                 ]}>
             </MySelect>
 
-            <FilmsList list={films} modal={modal} setModal={setModal}/>
+            <FilmsList remove={deleteFilm} list={sortedFilms} modal={modal} setModal={setModal}/>
         </div>
 
     );
