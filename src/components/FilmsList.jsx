@@ -6,7 +6,7 @@ import FilmInfo from "./FilmInfo";
 
 const FilmsList = ({list}) => {
     const [modal, setModal] = useState(false);
-    const [openedFilm, setOpenedFilm] = useState({});
+    const [openedFilm, setOpenedFilm] = useState(undefined);
 
     const openFilmInfo = (film) => {
         setModal(true)
