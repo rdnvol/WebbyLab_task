@@ -7,7 +7,9 @@ const NewFilmForm = ({create}) => {
     const [title, setTitle] = useState('')
     const [release, setRelease] = useState('')
     const [format, setFormat] = useState('VHS')
-    const [stars, setStars] = useState('')
+    const [star, setStar] = useState('')
+    const [starsList, setStarsList] = useState([])
+    // let stars = []
 
     const addNewFilm = (e) => {
         e.preventDefault()
@@ -16,14 +18,22 @@ const NewFilmForm = ({create}) => {
             title,
             release,
             format,
-            stars,
+            stars: starsList,
         }
-        console.log(newFilm)
+        // console.log(newFilm)
         create(newFilm)
         setTitle('')
         setRelease('')
-        setStars('VHS')
-        setStars('')
+        setFormat('VHS')
+        // setStars('')
+    }
+
+    const addStarToList = (e) =>
+    {
+        e.preventDefault()
+        setStarsList((currentStars) => [...currentStars, star])
+        console.log(starsList)
+        setStar('')
     }
 
     return (
@@ -65,12 +75,12 @@ const NewFilmForm = ({create}) => {
             />Blu-ray
 
             <MyInput
-                value={stars}
-                onChange={(e) => setStars(e.target.value)}
+                value={star}
+                onChange={(e) => setStar(e.target.value)}
                 type="text"
                 placeholder="Список акторів"
-                required
             />
+            <MyButton onClick={addStarToList}>додати</MyButton>
             <MyButton type="submit">Add</MyButton>
 
         </form>

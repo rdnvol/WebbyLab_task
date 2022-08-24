@@ -3,7 +3,6 @@ import MyButton from "./UI/button/MyButton";
 // import classes from './FilmsList.module.css'
 
 const FilmInfo = ({film, remove}) => {
-    console.log(remove)
     if (film)
     {
         return (

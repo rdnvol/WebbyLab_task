@@ -44,8 +44,11 @@ function App() {
     const [selectSort, setSelectSort] = useState('');
 
     const createFilm = (newFilm) => {
-        setFilms([...films, newFilm])
+        console.log(newFilm)
+        films.push(newFilm)
+        // setFilms(films)
         setModal(false)
+        console.log(films)
     }
 
     const deleteFilm = (deletedFilm) => {
